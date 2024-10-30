@@ -1,5 +1,7 @@
 
+using Chat_Room_Demo.DataService;
 using Chat_Room_Demo.Hubs;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Chat_Room_Demo
 {
@@ -13,10 +15,24 @@ namespace Chat_Room_Demo
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyDefaultPolicy",
+                   policy =>
+                   {
+                       policy.WithOrigins("http://localhost:3000")
+                             .WithOrigins("http://localhost:5173")
+                             .WithOrigins("http://localhost:8081")
+                             .WithOrigins("https://rhcqs.vercel.app")
+                             .AllowAnyHeader()
+                             .AllowAnyMethod()
+                             .AllowCredentials();
+                   });
+            });
 
+            builder.Services.AddSingleton<SharedDb>();
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
