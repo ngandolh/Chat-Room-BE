@@ -43,6 +43,8 @@ namespace Chat_Room_Demo
 
             app.UseAuthorization();
 
+            app.UseCors("MyDefaultPolicy");
+
 
             app.MapControllers();
 
