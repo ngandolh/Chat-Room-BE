@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Chat-Room-Demo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed84f53d710f5d4566c548eb80113a189d7c5253")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cc7288ce6e4597883195db62875252e821f8624")]
 [assembly: System.Reflection.AssemblyProductAttribute("Chat-Room-Demo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Chat-Room-Demo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
