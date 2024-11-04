@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat-Room-Demo", "Chat-Room-Demo.csproj", "{50ACF451-22D4-4BA9-B44C-79021C53DEBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat-Room-Demo", "Chat-Room-Demo.csproj", "{50ACF451-22D4-4BA9-B44C-79021C53DEBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Chat", "..\Domain.Chat\Domain.Chat.csproj", "{A368EB2A-CEEB-475F-8211-FFF25A05A213}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{50ACF451-22D4-4BA9-B44C-79021C53DEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50ACF451-22D4-4BA9-B44C-79021C53DEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50ACF451-22D4-4BA9-B44C-79021C53DEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A368EB2A-CEEB-475F-8211-FFF25A05A213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A368EB2A-CEEB-475F-8211-FFF25A05A213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A368EB2A-CEEB-475F-8211-FFF25A05A213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A368EB2A-CEEB-475F-8211-FFF25A05A213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

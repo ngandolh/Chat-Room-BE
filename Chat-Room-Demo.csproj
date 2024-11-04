@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Domain.Chat\Domain.Chat.csproj" />
   </ItemGroup>
 
 </Project>
