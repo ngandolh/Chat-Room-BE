@@ -1,7 +1,10 @@
 
 using Chat_Room_Demo.DataService;
 using Chat_Room_Demo.Hubs;
+using Chat_Room_Demo.Services;
+using Domain.Chat.Models;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat_Room_Demo
 {
@@ -30,7 +33,10 @@ namespace Chat_Room_Demo
                    });
             });
 
+            builder.Services.AddDbContext<ChatRoomContext>(options =>
+              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddSingleton<SharedDb>();
+            builder.Services.AddScoped<IChatService,  ChatService>();
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

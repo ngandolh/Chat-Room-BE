@@ -1,4 +1,6 @@
 ﻿using Chat_Room_Demo.Hubs;
+using Chat_Room_Demo.Services;
+using Domain.Chat.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -10,19 +12,27 @@ namespace Chat_Room_Demo.Controllers
     public class ChatController : ControllerBase
     {
         private readonly IHubContext<ChatHub> _chatHubContext;
+        private readonly IChatService _chatService;
 
-        public ChatController(IHubContext<ChatHub> chatHubContext)
+        public ChatController(IHubContext<ChatHub> chatHubContext, IChatService chatService)
         {
             _chatHubContext = chatHubContext;
+            _chatService = chatService;
         }
 
         [HttpPost("joinRoom")]
         public async Task<IActionResult> JoinRoom([FromBody] JoinRoomRequest request)
         {
-            var chatHub = (ChatHub)_chatHubContext; 
-            await chatHub.JoinRoomPrive(request.AccountId1, request.AccountId2);
-            return Ok("Joined room successfully.");
+            var roomId = await _chatService.JoinRoomPrivate(request.AccountId1, request.AccountId2, request.ConnectionId);
+            return Ok(new { message = "User has successfully joined the room", roomId });
         }
+
+
+        //[HttpGet]
+        //public async Task<IActionResult> NotificationStaff()
+        //{
+        //    await _chatService.NotifyNewRoomStaff();
+        //}
 
         [HttpPost("joinTest")]
         public async Task<IActionResult> JoinRoomNormal ([FromBody] JoinRoomRequest request)
@@ -50,5 +60,6 @@ namespace Chat_Room_Demo.Controllers
     {
         public Guid AccountId1 { get; set; }
         public Guid AccountId2 { get; set; }
+        public string ConnectionId { get; set; }
     }
 }

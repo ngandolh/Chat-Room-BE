@@ -1,6 +1,7 @@
 ﻿using Chat_Room_Demo.DataService;
 using Chat_Room_Demo.Entity;
 using Chat_Room_Demo.Models;
+using Chat_Room_Demo.Services;
 using Domain.Chat.Models;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,12 @@ namespace Chat_Room_Demo.Hubs
     {
         private readonly SharedDb _shared;
         private readonly ChatRoomContext _context;
-        public ChatHub(SharedDb shared, ChatRoomContext context)
+        private readonly ChatService _chatService;
+        public ChatHub(SharedDb shared, ChatRoomContext context, ChatService chatService)
         {
             _shared = shared;
             _context = context;
+            _chatService = chatService;
         }
 
         public async Task SendMessage(ChatMessage chatMessage)
@@ -91,54 +94,20 @@ namespace Chat_Room_Demo.Hubs
                 $"{_shared.connections[Context.ConnectionId].Username} has joined the chat in {roomId}.");
         }
 
-        public async Task JoinRoomPrive(Guid accountId1, Guid accountId2)
+        public async Task JoinPrivateRoom(Guid accountId1, Guid accountId2)
         {
-            //Customer gửi 2 CustomerId - SaleId
-            //Check room (table) đã tồn tại room chưa
-            //Case 1: Chưa có room -> Tạo room
-            var isRoom = await _context.Rooms.FirstOrDefaultAsync(r =>
-                       (r.CustomerId == accountId1 && r.SaleId == accountId2) ||
-                       (r.CustomerId == accountId2 && r.SaleId == accountId1));
-            if (isRoom == null)
+            var connectionId = Context.ConnectionId;
+            await _chatService.JoinRoomPrivate(accountId1, accountId2, connectionId);
+        }
+
+        public override async Task OnConnectedAsync()
+        {
+            var userId = Context.UserIdentifier; // Get the Sales Staff ID
+            if (userId != null)
             {
-                var newRoom = new Room
-                {
-                    Id = Guid.NewGuid(),
-                    CustomerId = accountId1,
-                    SaleId = accountId2,
-                    InsDate = DateTime.Now
-                };
-
-                await _context.Rooms.AddAsync(newRoom);
-                await _context.SaveChangesAsync();
-
-                await Groups.AddToGroupAsync(Context.ConnectionId, newRoom.Id.ToString());
-
-                var username = GetSampleUsername(accountId1);
-                _shared.connections[Context.ConnectionId] = new UserConnection
-                {
-                    Username = username,
-                    ChatRoom = newRoom.Id.ToString(),
-                };
-
-                await Clients.Group(newRoom.Id.ToString()).SendAsync("ReceiveJoinNotification", "admin",
-                    $"{_shared.connections[Context.ConnectionId].Username} has joined the chat in {newRoom.Id.ToString()}.");
+                await Groups.AddToGroupAsync(Context.ConnectionId, userId);
             }
-            else
-            {
-                await Groups.AddToGroupAsync(Context.ConnectionId, isRoom.Id.ToString());
-
-                var username = GetSampleUsername(accountId1);
-                _shared.connections[Context.ConnectionId] = new UserConnection
-                {
-                    Username = username,
-                    ChatRoom = isRoom.Id.ToString(),
-                };
-
-                await Clients.Group(isRoom.Id.ToString()).SendAsync("ReceiveJoinNotification", "admin",
-                    $"{_shared.connections[Context.ConnectionId].Username} has joined the chat in {isRoom.Id.ToString()}.");
-            }
-           
+            await base.OnConnectedAsync();
         }
 
     }
