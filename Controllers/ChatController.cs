@@ -20,6 +20,13 @@ namespace Chat_Room_Demo.Controllers
             _chatService = chatService;
         }
 
+        [HttpPost("send")]
+        public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request)
+        {
+            await _chatHubContext.Clients.Group(request.RoomId).SendAsync("ReceiveMessage", request.User, request.Message);
+            return Ok(new { status = "Message sent", request.Message });
+        }
+
         [HttpPost("joinRoom")]
         public async Task<IActionResult> JoinRoom([FromBody] JoinRoomRequest request)
         {
@@ -61,5 +68,12 @@ namespace Chat_Room_Demo.Controllers
         public Guid AccountId1 { get; set; }
         public Guid AccountId2 { get; set; }
         public string ConnectionId { get; set; }
+    }
+
+    public class SendMessageRequest
+    {
+        public string RoomId { get; set; }
+        public string User { get; set; }
+        public string Message { get; set; }
     }
 }

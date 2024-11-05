@@ -1,39 +1,29 @@
 ﻿using Chat_Room_Demo.DataService;
 using Chat_Room_Demo.Entity;
 using Chat_Room_Demo.Models;
-using Chat_Room_Demo.Services;
-using Domain.Chat.Models;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Chat_Room_Demo.Hubs
 {
     public class ChatHub : Hub
     {
         private readonly SharedDb _shared;
-        private readonly ChatRoomContext _context;
-        private readonly ChatService _chatService;
-        public ChatHub(SharedDb shared, ChatRoomContext context, ChatService chatService)
+        private readonly ILogger _logger;
+
+        public ChatHub(SharedDb shared, ILogger<ChatHub> logger)
         {
             _shared = shared;
-            _context = context;
-            _chatService = chatService;
-        }
-
-        public async Task SendMessage(ChatMessage chatMessage)
-        {
-            await Clients.All.SendAsync("Send", chatMessage);
+            _logger = logger;
         }
 
         public async Task JoinChat(UserConnection conn)
         {
-            await Clients.All
-                .SendAsync("ReceiveMessage", "admin", $"{conn.Username} has joined");
+            await Clients.All.SendAsync("ReceiveMessage", "admin", $"{conn.Username} has joined");
         }
 
         public async Task JoinSpecificChatRoom(UserConnection conn)
         {
-
             await Groups.AddToGroupAsync(Context.ConnectionId, conn.ChatRoom);
 
             _shared.connections[Context.ConnectionId] = conn;
@@ -42,43 +32,62 @@ namespace Chat_Room_Demo.Hubs
                 $"{conn.Username} has joined {conn.ChatRoom}");
         }
 
-        //public async Task SendMessage(string msg)
-        //{
-        //    if (_shared.connections.TryGetValue(Context.ConnectionId, out UserConnection conn))
-        //    {
-        //        await Clients.Groups(conn.ChatRoom).SendAsync("ReceiveSpecificMessage", conn.Username, msg);
-        //    }
-        //}
-    
-
-        public async Task SendMessagePrivate(string msg)
+        public override async Task OnConnectedAsync()
         {
-            if (_shared.connections.TryGetValue(Context.ConnectionId, out UserConnection conn))
+            var userId = Context.UserIdentifier;
+            if (userId != null)
             {
-                // Sử dụng `Clients.Group` với `conn.ChatRoom` để gửi message đến đúng nhóm
-                await Clients.Group(conn.ChatRoom).SendAsync("ReceiveMessagePrivate", conn.Username, msg);
+                await Groups.AddToGroupAsync(Context.ConnectionId, userId);
+            }
+            await base.OnConnectedAsync();
+        }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            _logger.LogError(exception, $"Client disconnected: {Context.ConnectionId}");
+            await base.OnDisconnectedAsync(exception);
+        }
+
+        public async Task JoinRoom(string roomId, bool isStaff)
+        {
+            try
+            {
+                if (isStaff)
+                    await Groups.AddToGroupAsync(Context.ConnectionId, $"staff_{roomId}");
+                else
+                    await Groups.AddToGroupAsync(Context.ConnectionId, $"customer_{roomId}");
+
+                await Clients.Group(roomId).SendAsync("ReceiveJoinNotification", "System", $"{Context.ConnectionId} has joined the room.");
+            }
+            catch (Exception ex)
+            {
+                await Clients.Caller.SendAsync("ReceiveMessage", "System", $"JoinRoom failed: {ex.Message}");
+                throw;  // Re-throw to catch this error on the client
             }
         }
 
 
-
-        private static readonly Dictionary<Guid, string> SampleUsers = new()
-            {
-                { Guid.Parse("e2a30c6d-47b3-4b4a-bc95-71fba5b86a1e"), "Customer" },
-                { Guid.Parse("b4b6d4fc-95a2-4de9-b3d8-d8b35fb0854f"), "SalesRep" }
-            };
-
-        // Get a username by account ID
-        private string GetSampleUsername(Guid accountId)
+        public async Task SendMessage(string roomId, string user, string message, bool isStaff)
         {
-            return SampleUsers.ContainsKey(accountId) ? SampleUsers[accountId] : "Unknown";
+            string targetGroup = isStaff ? $"staff_{roomId}" : $"customer_{roomId}";
+
+            // Broadcast message to the specific target group
+            await Clients.Group(targetGroup).SendAsync("ReceiveMessage", user, message);
         }
+
+
+
+        //public async Task SendMessagePrivate(string msg)
+        //{
+        //    if (_shared.connections.TryGetValue(Context.ConnectionId, out UserConnection conn))
+        //    {
+        //        await Clients.Group(conn.ChatRoom).SendAsync("ReceiveMessagePrivate", conn.Username, msg);
+        //    }
+        //}
 
         public async Task JoinPrivateChatRoom(Guid accountId1, Guid accountId2)
         {
             var roomId = accountId2.ToString();
-
-            // Log để kiểm tra roomId cho cả customer và sales
             Console.WriteLine($"User {accountId1} or {accountId2} joining room {roomId}");
 
             await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
@@ -97,18 +106,24 @@ namespace Chat_Room_Demo.Hubs
         public async Task JoinPrivateRoom(Guid accountId1, Guid accountId2)
         {
             var connectionId = Context.ConnectionId;
-            await _chatService.JoinRoomPrivate(accountId1, accountId2, connectionId);
+            await Clients.Caller.SendAsync("    Result", await JoinRoomPrivate(accountId1, accountId2, connectionId));
         }
 
-        public override async Task OnConnectedAsync()
+        private async Task<Guid> JoinRoomPrivate(Guid accountId1, Guid accountId2, string connectionId)
         {
-            var userId = Context.UserIdentifier; // Get the Sales Staff ID
-            if (userId != null)
-            {
-                await Groups.AddToGroupAsync(Context.ConnectionId, userId);
-            }
-            await base.OnConnectedAsync();
+            // Your logic or call ChatService if needed (use IHubContext if ChatService calls ChatHub)
+            // Temporary stub return
+            return Guid.NewGuid();
         }
 
+        private string GetSampleUsername(Guid accountId)
+        {
+            var SampleUsers = new Dictionary<Guid, string>
+            {
+                { Guid.Parse("e2a30c6d-47b3-4b4a-bc95-71fba5b86a1e"), "Customer" },
+                { Guid.Parse("b4b6d4fc-95a2-4de9-b3d8-d8b35fb0854f"), "SalesRep" }
+            };
+            return SampleUsers.ContainsKey(accountId) ? SampleUsers[accountId] : "Unknown";
+        }
     }
 }

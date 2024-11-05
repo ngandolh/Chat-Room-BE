@@ -14,7 +14,13 @@ namespace Chat_Room_Demo
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddSignalR();
+            builder.Services.AddSignalR(options =>
+            {
+                options.KeepAliveInterval = TimeSpan.FromSeconds(10);
+                options.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+                options.HandshakeTimeout = TimeSpan.FromSeconds(15);
+            });
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -32,9 +38,12 @@ namespace Chat_Room_Demo
                              .AllowCredentials();
                    });
             });
-
             builder.Services.AddDbContext<ChatRoomContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                Console.WriteLine("DbContext configured successfully.");
+            });
+
             builder.Services.AddSingleton<SharedDb>();
             builder.Services.AddScoped<IChatService,  ChatService>();
             var app = builder.Build();
