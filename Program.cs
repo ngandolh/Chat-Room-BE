@@ -64,6 +64,7 @@ namespace Chat_Room_Demo
             app.MapControllers();
 
             app.MapHub<ChatHub>("/Chat");
+            app.MapHub<ChatOne>("/chat-one");
 
             app.Run();
         }

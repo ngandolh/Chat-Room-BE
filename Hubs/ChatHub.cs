@@ -48,34 +48,16 @@ namespace Chat_Room_Demo.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task JoinRoom(string roomId, bool isStaff)
+        public async Task JoinRoom(string roomId)
         {
-            try
-            {
-                if (isStaff)
-                    await Groups.AddToGroupAsync(Context.ConnectionId, $"staff_{roomId}");
-                else
-                    await Groups.AddToGroupAsync(Context.ConnectionId, $"customer_{roomId}");
-
-                await Clients.Group(roomId).SendAsync("ReceiveJoinNotification", "System", $"{Context.ConnectionId} has joined the room.");
-            }
-            catch (Exception ex)
-            {
-                await Clients.Caller.SendAsync("ReceiveMessage", "System", $"JoinRoom failed: {ex.Message}");
-                throw;  // Re-throw to catch this error on the client
-            }
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
+            await Clients.Group(roomId).SendAsync("ReceiveJoinNotification", Context.ConnectionId, "has joined the room.");
         }
 
-
-        public async Task SendMessage(string roomId, string user, string message, bool isStaff)
+        public async Task SendMessage(string roomId, string user, string message)
         {
-            string targetGroup = isStaff ? $"staff_{roomId}" : $"customer_{roomId}";
-
-            // Broadcast message to the specific target group
-            await Clients.Group(targetGroup).SendAsync("ReceiveMessage", user, message);
+            await Clients.Group(roomId).SendAsync("ReceiveMessage", user, message);
         }
-
-
 
         //public async Task SendMessagePrivate(string msg)
         //{
