@@ -25,10 +25,10 @@ namespace Chat_Room_Demo.Hubs
             if (existingRoom != null)
             {
                 // Room exists, join it instead of creating a new one
-                await JoinRoom(existingRoom.Id.ToString(), customerId.ToString());
+                await JoinRoom(existingRoom.Id, customerId.ToString());
 
                 // Optionally, send the initial message to this existing room
-                await SendMessageToRoom(existingRoom.Id.ToString(), customerId.ToString(), initialMessage);
+                await SendMessageToRoom(existingRoom.Id, customerId.ToString(), initialMessage);
             }
             else
             {
@@ -48,31 +48,31 @@ namespace Chat_Room_Demo.Hubs
                 await Clients.User(saleId.ToString()).SendAsync("ReceiveRoomNotification", room.Id.ToString());
 
                 // Send initial message in the new room
-                 await SendMessageToRoom(room.Id.ToString(), customerId.ToString(), initialMessage);
+                 await SendMessageToRoom(room.Id, customerId.ToString(), initialMessage);
             }
         }
 
 
 
-        public async Task JoinRoom(string roomId, string username)
+        public async Task JoinRoom(Guid roomId, string username)
         {
             // Kiểm tra nếu room đã tồn tại và có nhiều nhất 2 người
-            if (roomUsers.ContainsKey(roomId))
+            if (roomUsers.ContainsKey(roomId.ToString()))
             {
-                if (roomUsers[roomId].Count >= 2)
+                if (roomUsers[roomId.ToString()].Count >= 2)
                 {
                     await Clients.Caller.SendAsync("RoomFull", "This room is full.");
                     return;
                 }
-                roomUsers[roomId].Add(Context.ConnectionId);
+                roomUsers[roomId.ToString()].Add(Context.ConnectionId);
             }
             else
             {
-                roomUsers[roomId] = new List<string> { Context.ConnectionId };
+                roomUsers[roomId.ToString()] = new List<string> { Context.ConnectionId };
             }
 
-            await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
-            await Clients.Group(roomId).SendAsync("UserJoined", username);
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomId.ToString());
+            await Clients.Group(roomId.ToString()).SendAsync("UserJoined", username);
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
@@ -90,9 +90,9 @@ namespace Chat_Room_Demo.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task SendMessageToRoom(string roomId, string user, string message)
+        public async Task SendMessageToRoom(Guid roomId, string user, string message)
         {
-            await Clients.Group(roomId).SendAsync("ReceiveMessage", user, message, roomId);
+            await Clients.Group(roomId.ToString()).SendAsync("ReceiveMessage", user, message, roomId);
         }
 
         public async Task HandleMessage(string action, JObject message)
@@ -111,14 +111,14 @@ namespace Chat_Room_Demo.Hubs
             {
                 var roomId = message["data"]["roomId"].ToString();
                 var username = message["data"]["username"].ToString();
-                await JoinRoom(roomId, username);
+                await JoinRoom(Guid.Parse(roomId), username);
             }
             else if (action == "SendMessageToRoom")
             {
                 var roomId = message["data"]["roomId"].ToString();
                 var user = message["data"]["user"].ToString();
                 var messageText = message["data"]["message"].ToString();
-                await SendMessageToRoom(roomId, user, messageText);
+                await SendMessageToRoom(Guid.Parse(roomId), user, messageText);
             }
         }
     }
