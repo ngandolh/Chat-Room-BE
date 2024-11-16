@@ -46,6 +46,7 @@ namespace Chat_Room_Demo
 
             builder.Services.AddSingleton<SharedDb>();
             builder.Services.AddScoped<IChatService,  ChatService>();
+            builder.Services.AddScoped<IRoomService, RoomService>();
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

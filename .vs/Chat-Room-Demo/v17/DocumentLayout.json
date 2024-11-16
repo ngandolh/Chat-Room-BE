@@ -11,20 +11,20 @@
       "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\controllers\\chatonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:controllers\\chatonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\services\\room\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:services\\room\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\services\\room\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:services\\room\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -319,14 +319,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ChatOneController.cs",
-              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\ChatOneController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ChatOneController.cs",
-              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\ChatOneController.cs",
-              "RelativeToolTip": "Controllers\\ChatOneController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAA0wCgAAAAAAAAA",
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "Hubs\\ChatHub.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAawDkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T18:43:08.438Z",
+              "WhenOpened": "2024-11-16T07:36:22.062Z",
               "EditorCaption": ""
             },
             {
@@ -337,22 +337,10 @@
               "RelativeDocumentMoniker": "Hubs\\ChatOne.cs",
               "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatOne.cs",
               "RelativeToolTip": "Hubs\\ChatOne.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAMwFYAAAARAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAswEwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T10:59:00.99Z",
+              "WhenOpened": "2024-11-16T07:36:13.863Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChatService.cs",
-              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\ChatService.cs",
-              "RelativeDocumentMoniker": "Services\\ChatService.cs",
-              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\ChatService.cs",
-              "RelativeToolTip": "Services\\ChatService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T05:03:37.205Z"
             },
             {
               "$type": "Document",
@@ -362,34 +350,47 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAWwCkAAAAMAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAowCkAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T03:43:43.767Z",
+              "WhenOpened": "2024-11-16T07:22:14.264Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ChatController.cs",
-              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "Controllers\\ChatController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABsAAAAJAAAA",
+              "DocumentIndex": 4,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\RoomService.cs",
+              "RelativeDocumentMoniker": "Services\\Room\\RoomService.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\RoomService.cs",
+              "RelativeToolTip": "Services\\Room\\RoomService.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAswBYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T03:45:21.246Z"
+              "WhenOpened": "2024-11-16T07:10:54.688Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "Hubs\\ChatHub.cs",
-              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "Hubs\\ChatHub.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAzwDIAAAAxAAAA",
+              "DocumentIndex": 5,
+              "Title": "IRoomService.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\IRoomService.cs",
+              "RelativeDocumentMoniker": "Services\\Room\\IRoomService.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\IRoomService.cs",
+              "RelativeToolTip": "Services\\Room\\IRoomService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T17:54:54.601Z"
+              "WhenOpened": "2024-11-16T07:10:32.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoomController.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\RoomController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoomController.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Controllers\\RoomController.cs",
+              "RelativeToolTip": "Controllers\\RoomController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAqwCMAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T07:10:24.965Z",
+              "EditorCaption": ""
             }
           ]
         },
