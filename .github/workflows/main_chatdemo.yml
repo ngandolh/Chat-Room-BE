@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release ./Chat-Room-Demo
+        run: dotnet build --configuration Release ./Chat-Room-BE
 
       - name: dotnet publish
         run: dotnet publish ./Chat-Room-Demo -c Release -o ./Chat-Room-Demo/publish_output
