@@ -106,7 +106,7 @@ namespace Chat_Room_Demo.Hubs
         public async Task JoinPrivateRoom(Guid accountId1, Guid accountId2)
         {
             var connectionId = Context.ConnectionId;
-            await Clients.Caller.SendAsync("    Result", await JoinRoomPrivate(accountId1, accountId2, connectionId));
+            await Clients.Caller.SendAsync("Result", await JoinRoomPrivate(accountId1, accountId2, connectionId));
         }
 
         private async Task<Guid> JoinRoomPrivate(Guid accountId1, Guid accountId2, string connectionId)

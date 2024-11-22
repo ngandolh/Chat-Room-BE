@@ -3,10 +3,22 @@
   "WorkspaceRootPath": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
+=======
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\hubs\\chatone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:hubs\\chatone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+>>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,6 +29,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|d:\\project\\asp.net\\chat-room-demo\\chat-room-be\\services\\room\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50ACF451-22D4-4BA9-B44C-79021C53DEBF}|Chat-Room-Demo.csproj|solutionrelative:services\\room\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 194,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 73,
+=======
+          "SelectedChildIndex": 68,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,10 +55,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:199:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -51,10 +67,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:56:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
@@ -310,7 +322,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwEAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T17:29:17.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\RoomService.cs",
+              "RelativeDocumentMoniker": "Services\\Room\\RoomService.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\Room\\RoomService.cs",
+              "RelativeToolTip": "Services\\Room\\RoomService.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T04:38:15.007Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+<<<<<<< Updated upstream
               "Title": "ChatService.cs",
               "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Services\\ChatService.cs",
               "RelativeDocumentMoniker": "Services\\ChatService.cs",
@@ -359,6 +397,28 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T17:54:54.601Z",
               "EditorCaption": ""
+=======
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "Hubs\\ChatHub.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAADgvzIAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T07:36:22.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatOne.cs",
+              "DocumentMoniker": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatOne.cs",
+              "RelativeDocumentMoniker": "Hubs\\ChatOne.cs",
+              "ToolTip": "D:\\Project\\ASP.NET\\Chat-Room-Demo\\Chat-Room-BE\\Hubs\\ChatOne.cs",
+              "RelativeToolTip": "Hubs\\ChatOne.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T07:36:13.863Z"
+>>>>>>> Stashed changes
             }
           ]
         },
